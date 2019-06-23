@@ -1,0 +1,8 @@
+# code trimmed for brevity from azure-pipelines.yml
+...
+  steps: # 'Steps' section is to be used inside 'job' section.
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: 'env | sort'
+...
