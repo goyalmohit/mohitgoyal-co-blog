@@ -1,0 +1,33 @@
+# Sample pipeline code to demonstrate scheduling using cron syntax
+
+pool:
+  name: 'Hosted Ubuntu 1604'
+
+schedules:
+- cron: "0 * * * *"
+  displayName: "hourly build"
+  branches:
+    include:
+    - cron-schedule
+  always: "true"
+
+- cron: "0 0 * * *"
+  displayName: "daily midnight build"
+  branches:
+    include:
+    - master
+    - features/*
+    exclude:
+    - features/released/*
+    - features/archived/*
+  always: "false"
+
+variables:
+  buildConfiguration: 'Release'
+  buildPlatform: 'AnyCPU'
+
+steps:
+- script: |
+    dotnet build --configuration $(buildConfiguration)
+    dotnet test dotnetcore-tests --configuration $(buildConfiguration) --logger trx
+    dotnet publish --configuration $(buildConfiguration) --output out

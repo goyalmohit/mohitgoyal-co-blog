@@ -1,0 +1,9 @@
+schedules:
+- cron: string # cron syntax defining a schedule
+  displayName: string # friendly name given to a specific schedule
+  branches:
+    # include is calculated first followed by exclude
+    # there is no implicit include
+    include: [ string ] # which branches the schedule applies to
+    exclude: [ string ] # which branches to exclude from the schedule
+  always: boolean # whether to always run the pipeline or only if there have been source code changes since the last run. The default is false.
