@@ -14,12 +14,12 @@ schedules:
 - cron: "0 0 * * *"
   displayName: "daily midnight build"
   branches:
-   include:
-     - master
-     - features/*
-   exclude:
-     - features/released/*
-     - features/archived/*
+    include:
+    - master
+    - features/*
+    exclude:
+    - features/released/*
+    - features/archived/*
   always: "false"
 
 variables:
