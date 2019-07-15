@@ -1,0 +1,39 @@
+# install azure devops extension
+az extension add --name azure-devops
+
+# verify the azure devops extension is installed
+az extension list
+
+# working with az devops help
+az devops --help
+# or
+az devops -h
+
+# working with az pipelines help
+az pipelines --help
+# or
+az pipelines -h
+
+# configure defaults for the azure devops connection
+az devops configure --defaults organization=<organization-url> project=<project-name>
+
+# check the default configuration
+az devops configure --list
+
+# listing azure pipelines 
+az pipelines list
+
+# create azure pipelines on the basis of current checked out repository
+az pipelines create --name "dotnet-core.ci"
+
+# create azure pipelines using yaml file by supplying repository context
+az pipelines create --name "dotnet-core.ci" --description "pipeline for dotnet-core project" \
+  --repository "pipelines-dotnet-core" --repository-type tfsgit --branch master --yml-path azure-pipelines.yml
+
+# list azure pipelines runs
+az pipelines runs list
+
+# delete azure pipeline
+az pipelines delete --id <pipeline-id>
+
+
