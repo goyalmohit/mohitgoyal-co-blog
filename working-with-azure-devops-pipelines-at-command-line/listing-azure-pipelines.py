@@ -1,6 +1,8 @@
-# Parse output from az pipelines list command into a nice format using python
-# Below code assumes that output from 'az pipelines list' command has been stored 
-# under the az-pipelines-list.json file.
+"""
+Parse output from az pipelines list command into a nice format using python
+Below code assumes that output from 'az pipelines list' command has been stored 
+under the az-pipelines-list.json file
+"""
 
 import sys, json
 
