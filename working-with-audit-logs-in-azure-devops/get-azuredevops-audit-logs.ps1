@@ -25,7 +25,6 @@ Function Get-AzureDevOpsAuditLogs {
         $pat = Get-Content -Path ".\.token"
         $user = ""
         $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $user,$pat)))
-
     }
     
     Process{
@@ -40,13 +39,12 @@ Function Get-AzureDevOpsAuditLogs {
         }
         
         Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -OutFile $OutFilePath
-
     }
 
     End {
         Write-Verbose "In End Block: Get-AzureDevOpsAuditLogs()"
     }
-
 }
 
-Get-AzureDevOpsAuditLogs -OrganizationName {organization-name}
+# call above function
+Get-AzureDevOpsAuditLogs -OrganizationName {organization-name} 

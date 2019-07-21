@@ -34,4 +34,5 @@ function Parse-AzureDevOpsAuditLogs {
     }
 }
 
+# calls above function
 Parse-AzureDevOpsAuditLogs -Path .\auditLog.json
