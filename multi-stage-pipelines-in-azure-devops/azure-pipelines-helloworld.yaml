@@ -1,0 +1,31 @@
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    continueOnError: true
+    steps:
+    - script: echo "hello to my first Build"
+- stage: dev_deploy
+  jobs:
+  - deployment: dev_deploy
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    environment: 'dev-hello'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "hello, dev world !!!"
+- stage: qa_deploy
+  jobs:
+  - deployment: qa_deploy
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    environment: 'qa-hello'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "hello, qa world !!!"
