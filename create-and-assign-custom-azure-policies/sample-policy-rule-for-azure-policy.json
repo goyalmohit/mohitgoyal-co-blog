@@ -1,0 +1,23 @@
+{
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "location",
+            "notIn": [ "eastus", "eastus2", "westus", "westus2" ]
+          },
+          {
+            "field": "location",
+            "notEquals": "global"
+          },
+          {
+            "field": "type",
+            "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+}
